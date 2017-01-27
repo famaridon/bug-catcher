@@ -1,0 +1,7 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "dependencies":      {
+    "html2canvas ": "v0.5.0-beta4"
+  }
+}

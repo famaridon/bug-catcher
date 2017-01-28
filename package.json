@@ -1,7 +1,10 @@
 {
   "name": "node",
   "version": "1.0.0",
-  "dependencies":      {
+  "dependencies": {
     "html2canvas ": "v0.5.0-beta4"
+  },
+  "devDependencies": {
+    "ts-loader": "^2.0.0"
   }
 }

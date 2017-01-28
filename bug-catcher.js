@@ -55,22 +55,49 @@
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	class Launcher {
+	const Dialog_1 = __webpack_require__(2);
+	class Launcher extends Dialog_1.Dialog {
 	    constructor() {
+	        super();
 	        this.template = `<button>Find a bug ?</button>`;
 	        this.position = "bottom-right";
 	    }
-	    show() {
+	    init() {
 	        this.node = document.createElement("div");
 	        this.node.innerHTML = this.template;
 	        this.node.classList.add("launcher");
+	        this.node.classList.add("hidden");
 	        document.body.appendChild(this.node);
+	        this.node.onclick = this.openBugWritter;
+	    }
+	    show() {
+	        if (this.node == null) {
+	            this.init();
+	        }
+	        this.node.classList.remove("hidden");
+	    }
+	    hide() {
+	        this.node.classList.add("hidden");
+	    }
+	    openBugWritter() {
+	        alert("open bug");
 	    }
 	}
 	exports.Launcher = Launcher;
+	;
+
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	"use strict";
+	class Dialog {
+	}
+	exports.Dialog = Dialog;
 	;
 
 

@@ -1,4 +1,6 @@
 import { Dialog } from "./Dialog";
+import { BugOverlay } from "./BugOverlay";
+
 export class Launcher extends Dialog{
 
   /**
@@ -10,18 +12,21 @@ export class Launcher extends Dialog{
   **/
   public position = "bottom-right";
   private node: HTMLElement;
+  private overlay: BugOverlay;
 
   constructor() {
     super();
+    this.overlay = new BugOverlay();
   }
 
   private init() {
     this.node = document.createElement("div");
     this.node.innerHTML = this.template;
+    this.node.classList.add("bug-catcher");
     this.node.classList.add("launcher");
     this.node.classList.add("hidden");
     document.body.appendChild(this.node);
-    this.node.onclick = this.openBugWritter;
+    this.node.onclick = () => this.openBugWritter();
   }
 
   public show(){
@@ -37,7 +42,7 @@ export class Launcher extends Dialog{
   }
 
   public openBugWritter() {
-    alert("open bug");
+    this.overlay.show();
   }
 
 };

@@ -1,0 +1,17 @@
+.bug-catcher{
+
+  &.launcher{
+
+    bottom: 0px;
+    right: 30px;
+    position: fixed;
+
+    button {
+      color: red;
+    }
+  }
+
+  &.hidden{
+    display: none;
+  }
+}

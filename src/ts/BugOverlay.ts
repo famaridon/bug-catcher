@@ -1,9 +1,13 @@
 import { Dialog } from "./Dialog";
 import { Launcher } from "./Launcher";
 
+/**
+* replace visible dom by an image
+**/
 export class BugOverlay extends Dialog{
 
   private overlay: HTMLElement;
+  private canvas: HTMLCanvasElement;
 
   constructor() {
     super();
@@ -17,10 +21,13 @@ export class BugOverlay extends Dialog{
     document.body.appendChild(this.overlay);
 
     html2canvas(document.body, {
-      onrendered: function(canvas) {
-        document.getElementById("bug-catcher-overlay").appendChild(canvas);
-      }
+      onrendered: (canvas) => this.setCanvas(canvas)
     });
+  }
+
+  private setCanvas(canvas: HTMLCanvasElement){
+    this.canvas = canvas;
+    document.getElementById("bug-catcher-overlay").appendChild(canvas);
   }
 
   public hide(){

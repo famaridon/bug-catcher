@@ -14,6 +14,10 @@ export class BugOverlay extends Dialog{
   }
 
   public show(){
+    /*stop scrolling*/
+    document.body.classList.add("stop-scrolling");
+
+    /* append the overlay */
     this.overlay = document.createElement("div");
     this.overlay.id = "bug-catcher-overlay";
     this.overlay.classList.add("overlay");
@@ -32,6 +36,7 @@ export class BugOverlay extends Dialog{
 
   public hide(){
     this.overlay.remove();
+    document.body.classList.remove("stop-scrolling");
   }
 
 };

@@ -16,12 +16,13 @@ export class Launcher extends Dialog{
 
   constructor() {
     super();
-    this.overlay = new BugOverlay();
+    this.overlay = new BugOverlay(this);
   }
 
   private init() {
     this.node = document.createElement("div");
     this.node.innerHTML = this.template;
+    this.node.id = "bug-catcher-launcher";
     this.node.classList.add("bug-catcher");
     this.node.classList.add("launcher");
     this.node.classList.add("hidden");

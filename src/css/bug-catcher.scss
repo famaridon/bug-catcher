@@ -2,13 +2,19 @@
 
   &.launcher{
 
-    bottom: 0px;
+    bottom: 0;
     right: 30px;
     position: fixed;
 
     button {
       color: red;
     }
+  }
+
+  &.overlay{
+    top: 0;
+    left: 0;
+    position: fixed;
   }
 
   &.hidden{

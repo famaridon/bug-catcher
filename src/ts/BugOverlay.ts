@@ -4,15 +4,12 @@ import { Launcher } from "./Launcher";
 export class BugOverlay extends Dialog{
 
   private overlay: HTMLElement;
-  private launcher: Launcher;
 
-  constructor(launcher: Launcher) {
+  constructor() {
     super();
-    this.launcher = launcher;
   }
 
   public show(){
-    this.launcher.hide();
     this.overlay = document.createElement("div");
     this.overlay.id = "bug-catcher-overlay";
     this.overlay.classList.add("overlay");
@@ -28,7 +25,6 @@ export class BugOverlay extends Dialog{
 
   public hide(){
     this.overlay.remove();
-
   }
 
 };

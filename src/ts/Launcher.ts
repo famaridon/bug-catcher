@@ -1,5 +1,5 @@
 import { Dialog } from "./Dialog";
-import { BugOverlay } from "./BugOverlay";
+import { BugWritter } from "./BugWritter";
 
 export class Launcher extends Dialog{
 
@@ -12,11 +12,11 @@ export class Launcher extends Dialog{
   **/
   public position = "bottom-right";
   private node: HTMLElement;
-  private overlay: BugOverlay;
+  private writter: BugWritter;
 
   constructor() {
     super();
-    this.overlay = new BugOverlay(this);
+    this.writter = new BugWritter(this);
   }
 
   private init() {
@@ -43,7 +43,7 @@ export class Launcher extends Dialog{
   }
 
   public openBugWritter() {
-    this.overlay.show();
+    this.writter.show();
   }
 
 };

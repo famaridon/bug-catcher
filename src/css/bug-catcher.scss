@@ -1,20 +1,22 @@
 .bug-catcher{
 
   &.launcher{
-
     bottom: 0;
     right: 30px;
     position: fixed;
-
-    button {
-      color: red;
-    }
   }
 
   &.overlay{
     top: 0;
     left: 0;
     position: fixed;
+  }
+
+  &.writter{
+    bottom: 0;
+    right: 30px;
+    position: fixed;
+    width: 300px;
   }
 
   &.hidden{

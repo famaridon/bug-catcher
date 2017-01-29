@@ -6,7 +6,7 @@ export class Launcher extends Dialog{
   /**
   * the html to display
   **/
-  public template = `<button>Find a bug ?</button>`;
+  public template = `<button class="btn btn-primary">Find a bug <span class="glyphicon glyphicon-info-sign"></span></button>`;
   /**
   * Wh
   **/
@@ -21,11 +21,13 @@ export class Launcher extends Dialog{
 
   private init() {
     this.node = document.createElement("div");
-    this.node.innerHTML = this.template;
     this.node.id = "bug-catcher-launcher";
     this.node.classList.add("bug-catcher");
     this.node.classList.add("launcher");
     this.node.classList.add("hidden");
+
+    this.node.appendChild(this.buildTemplate(this.template));
+
     document.body.appendChild(this.node);
     this.node.onclick = () => this.openBugWritter();
   }

@@ -29,7 +29,7 @@ export class Launcher extends Dialog{
     this.node.appendChild(this.buildTemplate(this.template));
 
     document.body.appendChild(this.node);
-    this.node.addEventListener("onclick", () => this.openBugWritter());
+    this.node.addEventListener("click", () => this.openBugWritter());
   }
 
   public show(){

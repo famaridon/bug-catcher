@@ -52,8 +52,8 @@ export class BugWritter extends Dialog{
 
     document.body.appendChild(this.node);
 
-    this.node.querySelector("button[type=submit]").addEventListener("onclick", () => this.send());
-    this.node.querySelector("button[type=reset]").addEventListener("onclick", () => this.hide());
+    this.node.querySelector("button[type=submit]").addEventListener("click", () => this.send());
+    this.node.querySelector("button[type=reset]").addEventListener("click", () => this.hide());
 
   }
 

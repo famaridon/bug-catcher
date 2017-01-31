@@ -1,7 +1,7 @@
 import { Dialog } from "./Dialog";
 import { Launcher } from "./Launcher";
 import { BugOverlay } from "./BugOverlay";
-import { BugService } from "./BugService";
+import { BugService, Bug } from "./BugService";
 
 export class BugWritter extends Dialog{
 
@@ -14,7 +14,7 @@ export class BugWritter extends Dialog{
     <div class="panel-body">
       <form>
         <div class="form-group">
-          <input type="email" class="form-control" id="input-email" placeholder="Email (mandatory)">
+          <input type="email" class="form-control" id="email" placeholder="Email (mandatory)">
         </div>
         <div class="form-group">
           <input type="text" class="form-control" id="title" placeholder="Title (mandatory)">
@@ -61,9 +61,22 @@ export class BugWritter extends Dialog{
   }
 
   public send():void{
-    let promise = this.bugService.postBug();
+    let bug = new Bug(this.getEmail(),this.getTitle(), this.getDescription(), this.overlay.getCanvas());
+    let promise = this.bugService.postBug(bug);
     promise.then((valeur) => this.onSendSucess(valeur));
     promise.catch((exception) => this.onSendError(exception));
+  }
+
+  private getEmail():string {
+    return (<HTMLInputElement>this.node.querySelector("#email")).value;
+  }
+
+  private getTitle():string {
+    return (<HTMLInputElement>this.node.querySelector("#title")).value;
+  }
+
+  private getDescription():string {
+    return (<HTMLInputElement>this.node.querySelector("#description")).value;
   }
 
   private onSendError(exception: string):void {

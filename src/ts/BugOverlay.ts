@@ -34,6 +34,10 @@ export class BugOverlay extends Dialog{
     document.getElementById("bug-catcher-overlay").appendChild(canvas);
   }
 
+  public getCanvas(): HTMLCanvasElement{
+    return this.canvas;
+  }
+
   public hide(){
     this.overlay.remove();
     document.body.classList.remove("stop-scrolling");

@@ -1,6 +1,7 @@
 import { Dialog } from "./Dialog";
 import { Launcher } from "./Launcher";
 import { BugOverlay } from "./BugOverlay";
+import { BugService } from "./BugService";
 
 export class BugWritter extends Dialog{
 
@@ -31,11 +32,13 @@ export class BugWritter extends Dialog{
   private overlay: BugOverlay;
   private node: HTMLElement;
   private launcher: Launcher;
+  private bugService: BugService;
 
   constructor(launcher: Launcher) {
     super();
     this.launcher = launcher;
     this.overlay = new BugOverlay();
+    this.bugService = new BugService();
   }
 
   public show(){
@@ -58,7 +61,17 @@ export class BugWritter extends Dialog{
   }
 
   public send():void{
+    let promise = this.bugService.postBug();
+    promise.then((valeur) => this.onSendSucess(valeur));
+    promise.catch((exception) => this.onSendError(exception));
+  }
 
+  private onSendError(exception: string):void {
+    alert(exception);
+  }
+
+  private onSendSucess(valeur: string):void {
+    alert(valeur);
   }
 
   public hide(){
